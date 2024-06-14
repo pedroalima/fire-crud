@@ -1,7 +1,14 @@
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, getDocs, query } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 
-export async function Add() {
+export async function getBooksAccess() {
+  const q = query(collection(db, "livros"));
+  const querySnapshot = await getDocs(q);
+
+  return querySnapshot;
+}
+
+export async function addBooksAccess() {
   try {
     const docRef = await addDoc(collection(db, "livros"), {
       author: "Ada",
