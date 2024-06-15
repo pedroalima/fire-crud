@@ -1,12 +1,17 @@
 import { DocumentData } from "firebase/firestore";
-import { getBooksAccess } from "../dataAccess/booksAccess";
+import { addBooksAccess, getBooksAccess } from "../dataAccess/booksAccess";
 
 export async function getBooksAction() {
-  const res = await getBooksAccess();
+  const response = await getBooksAccess();
   const books: DocumentData = [];
 
-  res.forEach((doc) => {
+  response.forEach((doc) => {
     books.push(doc.data());
   });
   return books;
+}
+
+export async function addBooksAction(body: DocumentData) {
+  const response = await addBooksAccess(body);
+  return response.id;
 }
