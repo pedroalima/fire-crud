@@ -1,5 +1,5 @@
 import { DocumentData } from "firebase/firestore";
-import { addBooksAccess, getBooksAccess, setBooksAccess } from "../dataAccess/booksAccess";
+import { addBooksAccess, getBooksAccess, setBooksAccess, updateBooksAccess } from "../dataAccess/booksAccess";
 
 export async function getBooksAction() {
   const response = await getBooksAccess();
@@ -18,5 +18,10 @@ export async function addBooksAction(body: DocumentData) {
 
 export async function setBooksAction(body: DocumentData, id: string) {
   const response = await setBooksAccess(body, id);
+  return response;
+}
+
+export async function updateBooksAction(body: DocumentData, id: string) {
+  const response = await updateBooksAccess(body, id);
   return response;
 }
