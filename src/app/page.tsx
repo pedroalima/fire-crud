@@ -1,5 +1,5 @@
 "use client";
-import { addBooksAction, getBooksAction } from "@/services/actions/booksAction";
+import { getBooksAction, setBooksAction } from "@/services/actions/booksAction";
 import { useEffect } from "react";
 
 export default function Home() {
@@ -24,7 +24,7 @@ export default function Home() {
             </li>
           ))}
         </ul> */}
-        <button onClick={() => addBooksAction({author: "R.R. Martin", title: "Game of Thrones"})}>Add Book</button>
+        <button onClick={() => setBooksAction({author: "R.R. Martin", title: "Dancing of Dragons"}, "6yE7xN1DTPuazyukXrIX")}>Add Book</button>
       </div>
     </main>
   );

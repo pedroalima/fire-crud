@@ -1,4 +1,4 @@
-import { addDoc, collection, DocumentData, getDocs, query } from "firebase/firestore";
+import { addDoc, collection, doc, DocumentData, getDocs, query, setDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 
 export async function getBooksAccess() {
@@ -9,5 +9,10 @@ export async function getBooksAccess() {
 
 export async function addBooksAccess(body: DocumentData) {
   const response = await addDoc(collection(db, "livros"), body);
+  return response;
+}
+
+export async function setBooksAccess(body: DocumentData, id: string) {
+  const response = await setDoc(doc(db, "livros", id), body);
   return response;
 }
