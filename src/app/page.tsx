@@ -1,15 +1,13 @@
 "use client";
-import { getBooksAction, updateBooksAction } from "@/services/actions/booksAction";
+import { addBooksAction } from "@/services/actions/booksAction";
+import { getBooksObserver } from "@/services/observers/booksObservers";
 import { useEffect } from "react";
 
 export default function Home() {
   // const [ books, setBooks ] = useState<DocumentData>([]);
 
   useEffect(() => {
-    getBooksAction()
-      .then((res) => {
-        console.log(res);
-      });
+    getBooksObserver();
   }, []);
 
   return (
@@ -24,7 +22,7 @@ export default function Home() {
             </li>
           ))}
         </ul> */}
-        <button onClick={() => updateBooksAction({title: "Dancing of Dragons: oceans blood"}, "6yE7xN1DTPuazyukXrIX")}>Add Book</button>
+        <button onClick={() => addBooksAction({title: "Rápido e Devagar", author: "Daniel kahneman"})}>Add Book</button>
       </div>
     </main>
   );
