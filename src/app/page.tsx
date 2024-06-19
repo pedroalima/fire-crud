@@ -1,5 +1,5 @@
 "use client";
-import { addBooksAction, getBooksAction } from "@/services/actions/booksAction";
+import { addBooksAction, deleteBooksAction, getBooksAction } from "@/services/actions/booksAction";
 import { getBooksObserver } from "@/services/observers/booksObservers";
 import { DocumentData } from "firebase/firestore";
 import { useEffect, useState } from "react";
@@ -35,25 +35,26 @@ export default function Home() {
             <li key={i} className="bg-slate-600 p-4 my-2 rounded-lg">
               <h3>Título: {book.title}</h3>
               <span>Author: {book.author}</span>
+              <button className="bg-red-500 p-2 rounded-lg block" onClick={() => deleteBooksAction("1ebSBA1YTssXbexU76vb")}>Delete</button>
             </li>
           ))}
         </ul>
       </div>
-      <form onSubmit={handleSubmit(onSubmit)} className="bg-slate-700">
-        <div>
+      <form onSubmit={handleSubmit(onSubmit)} className="bg-slate-700 flex flex-col items-center p-3 rounded-lg">
+        <div className="flex items-center gap-3 p-2">
           <label htmlFor="title">Título</label>
           <input
             id="title"
-            className="text-black"
+            className="text-black p-2 rounded-lg"
             {...register("title", { required: "First name is required" })}
           />
           {errors.title && <p>{errors.title.message}</p>}
         </div>
-        <div>
+        <div className="flex items-center gap-3 p-2">
           <label htmlFor="author">Autor</label>
           <input
             id="author"
-            className="text-black"
+            className="text-black p-2 rounded-lg"
             {...register("author", { required: "Last name is required" })}
           />
           {errors.author && <p>{errors.author.message}</p>}
