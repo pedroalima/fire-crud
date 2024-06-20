@@ -1,7 +1,6 @@
 "use client";
-import { addBooksAction, deleteBooksAction, getBooksAction } from "@/services/actions/booksAction";
+import { addBooksAction, BooksGetType, deleteBooksAction, getBooksAction } from "@/services/actions/booksAction";
 import { getBooksObserver } from "@/services/observers/booksObservers";
-import { DocumentData } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
@@ -11,7 +10,7 @@ type FormValues = {
 };
 
 export default function Home() {
-  const [ books, setBooks ] = useState<DocumentData>([]);
+  const [ books, setBooks ] = useState<BooksGetType[] | []>([]);
 
   const { register, handleSubmit, formState: { errors } } = useForm<FormValues>();
 
@@ -31,11 +30,11 @@ export default function Home() {
       <div>
         <h2>Meus Livros</h2>
         <ul className="bg-slate-800 p-6 rounded-lg">
-          {books.map((book: DocumentData, i: string) => (
-            <li key={i} className="bg-slate-600 p-4 my-2 rounded-lg">
+          {books && books.map((book: BooksGetType) => (
+            <li key={book.id} className="bg-slate-600 p-4 my-2 rounded-lg">
               <h3>Título: {book.title}</h3>
               <span>Author: {book.author}</span>
-              <button className="bg-red-500 p-2 rounded-lg block" onClick={() => deleteBooksAction("1ebSBA1YTssXbexU76vb")}>Delete</button>
+              <button className="bg-red-500 p-2 rounded-lg block" onClick={() => deleteBooksAction(book.id)}>Delete</button>
             </li>
           ))}
         </ul>
