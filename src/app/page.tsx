@@ -1,4 +1,6 @@
 "use client";
+
+import Button from "@/components/common/Button";
 import { addBooksAction, BooksGetType, deleteBooksAction, getBooksAction } from "@/services/actions/booksAction";
 import { getBooksObserver } from "@/services/observers/booksObservers";
 import { useEffect, useState } from "react";
@@ -17,6 +19,7 @@ export default function Home() {
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     addBooksAction(data);
     setBooks(getBooksObserver());
+    console.log(books);
   };  
 
   useEffect(() => {
@@ -29,12 +32,22 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div>
         <h2>Meus Livros</h2>
-        <ul className="bg-slate-800 p-6 rounded-lg">
+        <ul className="bg-slate-800 p-6 rounded-lg flex gap-4">
           {books && books.map((book: BooksGetType) => (
             <li key={book.id} className="bg-slate-600 p-4 my-2 rounded-lg">
               <h3>Título: {book.title}</h3>
               <span>Author: {book.author}</span>
-              <button className="bg-red-500 p-2 rounded-lg block" onClick={() => deleteBooksAction(book.id)}>Delete</button>
+              <div className="flex justify-between">
+                <Button
+                  text="Deletar"
+                  className="bg-red-500" 
+                  onClick={() => deleteBooksAction(book.id)}
+                />
+                <Button
+                  text="Editar"
+                  className="bg-white text-black"
+                />
+              </div>
             </li>
           ))}
         </ul>
