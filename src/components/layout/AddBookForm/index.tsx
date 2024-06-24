@@ -6,18 +6,18 @@ import { useContext } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 type FormValues = {
-    title: string;
-    author: string;
-  };
+  title: string;
+  author: string;
+};
 
 export default function AddBookForm() {
-  const { book, setBook } = useContext(BookContext);
+  const { books, setBooks } = useContext(BookContext);
   const { register, handleSubmit, formState: { errors } } = useForm<FormValues>();
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     addBooksAction(data);
-    setBook(getBooksObserver());
-    console.log(book);
+    setBooks(getBooksObserver());
+    console.log(books);
   };
 
   return (
