@@ -1,23 +1,19 @@
 "use client";
 import { BookContext } from "@/contexts/BookContext";
-import { addBooksAction } from "@/services/actions/booksAction";
-import { getBooksObserver } from "@/services/observers/booksObservers";
 import { useContext } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-type FormValues = {
+export type FormValues = {
   title: string;
   author: string;
 };
 
 export default function AddBookForm() {
-  const { books, setBooks } = useContext(BookContext);
+  const { addBook } = useContext(BookContext);
   const { register, handleSubmit, formState: { errors } } = useForm<FormValues>();
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    addBooksAction(data);
-    setBooks(getBooksObserver());
-    console.log(books);
+    addBook(data);
   };
 
   return (
