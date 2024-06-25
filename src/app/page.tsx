@@ -1,14 +1,21 @@
-import AddBookForm from "@/components/layout/AddBookForm";
-import BookList from "@/components/layout/BookList";
+
+import AddBook from "@/components/layout/AddBook";
+import Banner from "@/components/layout/Banner";
+import Header from "@/components/layout/Header";
+
 
 export default async function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div>
-        <h2>Meus Livros</h2>
-        <BookList />
-      </div>
-      <AddBookForm />
-    </main>
+    <div className="h-screen relative">
+      <Header />
+      <main className="flex flex-col items-centers">
+        <Banner />
+        <div>
+          <h2>Meus Livros</h2>
+          {/* <BookList /> */}
+        </div>
+      </main>
+      <AddBook />
+    </div>
   );
 }
