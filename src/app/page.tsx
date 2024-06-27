@@ -1,5 +1,5 @@
 
-import AddBook from "@/components/layout/AddBook";
+import AddBooks from "@/components/layout/AddBooks";
 import Banner from "@/components/layout/Banner";
 import Header from "@/components/layout/Header";
 
@@ -14,7 +14,7 @@ export default async function Home() {
           {/* <BookList /> */}
         </div>
       </main>
-      <AddBook />
+      <AddBooks />
     </div>
   );
 }
