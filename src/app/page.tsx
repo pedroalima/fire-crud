@@ -1,6 +1,7 @@
 
 import AddBooks from "@/components/layout/AddBooks";
 import Banner from "@/components/layout/Banner";
+import BookList from "@/components/layout/BookList";
 import Header from "@/components/layout/Header";
 
 export default async function Home() {
@@ -11,7 +12,7 @@ export default async function Home() {
         <Banner />
         <div>
           <h2>Meus Livros</h2>
-          {/* <BookList /> */}
+          <BookList />
         </div>
       </main>
       <AddBooks />
