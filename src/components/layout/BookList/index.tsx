@@ -15,7 +15,7 @@ export default function BookList() {
   return (
     <ul className="bg-slate-800 p-6 rounded-lg flex gap-4">
       {books && books.map((book: BooksGetType) => (
-        <Card key={book.id} className="w-[350px]">
+        <Card key={book.id} className="w-[300px]">
           <CardHeader>
             <CardTitle>{book.title}</CardTitle>
             <CardDescription>{book.author}</CardDescription>
@@ -29,24 +29,5 @@ export default function BookList() {
         </Card>
       ))}
     </ul>
-  // <ul className="bg-slate-800 p-6 rounded-lg flex gap-4">
-  //   {books && books.map((book: BooksGetType) => (
-  //     <li key={book.id} className="bg-slate-600 p-4 my-2 rounded-lg">
-  //       <h3>Título: {book.title}</h3>
-  //       <span>Author: {book.author}</span>
-  //       <div className="flex justify-between">
-  //         <Button
-  //           text="Deletar"
-  //           className="bg-red-500" 
-  //           onClick={() => deleteBooksAction(book.id)}
-  //         />
-  //         <Button
-  //           text="Editar"
-  //           className="bg-white text-black"
-  //         />
-  //       </div>
-  //     </li>
-  //   ))}
-  // </ul>
   );
 }
