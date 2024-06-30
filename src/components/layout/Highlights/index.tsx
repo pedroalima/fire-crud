@@ -1,10 +1,11 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
+import Image from "next/image";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -15,7 +16,8 @@ interface BookType {
     title: string,
     authors: string[],
     imageLinks: {
-      smallThumbnail: string
+      smallThumbnail: string,
+      thumbnail: string
     }
   }
 }
@@ -80,10 +82,12 @@ export default function Highlights() {
           <Card key={book.id} className="w-[300px]">
             <CardHeader>
               <CardTitle>{book.volumeInfo.title}</CardTitle>
-              {/* <CardDescription>{book.volumeInfo.authors[0]}</CardDescription> */}
+              {book.volumeInfo.authors.map((item, i) => (
+                <CardDescription key={i}>{item}</CardDescription>
+              ))}
             </CardHeader>
             <CardContent>
-              {/* <Image src={book.volumeInfo.imageLinks.smallThumbnail} width="250" height="400" alt="aweawe" /> */}
+              <Image src={book.volumeInfo.imageLinks.thumbnail} width={300} height={300} className="w-full h-full" alt={book.volumeInfo.title} />
             </CardContent>
             <CardFooter className="flex justify-between">
               <Button>Adicionar</Button>
