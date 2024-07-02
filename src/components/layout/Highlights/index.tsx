@@ -1,13 +1,13 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormMessage } from "@/components/ui/form";
+import { FormControl, FormDescription, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import Image from "next/image";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { Form, useForm } from "react-hook-form";
 import { z } from "zod";
 
 interface BookType {
@@ -36,23 +36,24 @@ export default function Highlights() {
     }
   });
 
-  function getGoogleBooks(title: string) {
-    axios.get("https://www.googleapis.com/books/v1/volumes", {
-      params:{
-        q: title,
-        key: process.env.GOOGLE_BOOKS_APIKEY
-      }
-    }).then(res => {
+  async function getGoogleBooks(title: string) {
+    try {
+      const res = await axios.get("https://www.googleapis.com/books/v1/volumes", {
+        params:{
+          q: title,
+          key: process.env.GOOGLE_BOOKS_APIKEY
+        }
+      });
+
       console.log(res.data.items);
       setBooks(res.data.items);
-    }).catch(error => {
+    } catch (error) {
       console.log(error);
-    });
+    } 
   }
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    getGoogleBooks(values.title);
-    console.log(values.title);
+  function onSubmit(value: z.infer<typeof formSchema>) {
+    getGoogleBooks(value.title);
   }
 
   return (
@@ -68,7 +69,7 @@ export default function Highlights() {
                   <Input placeholder="Título" {...field} />
                 </FormControl>
                 <FormDescription>
-                This is your public display name.
+                  This is your public display name.
                 </FormDescription>
                 <FormMessage />
               </FormItem>
@@ -82,7 +83,7 @@ export default function Highlights() {
           <Card key={book.id} className="w-[300px]">
             <CardHeader>
               <CardTitle>{book.volumeInfo.title}</CardTitle>
-              {book.volumeInfo.authors.map((item, i) => (
+              {book.volumeInfo.authors && book.volumeInfo.authors.map((item, i) => (
                 <CardDescription key={i}>{item}</CardDescription>
               ))}
             </CardHeader>
