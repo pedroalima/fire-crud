@@ -2,7 +2,7 @@
 import Banner from "@/components/layout/Banner";
 import SearchBook from "@/components/layout/SearchBook";
 
-export default async function Home() {
+export default function Home() {
   return (
     <main className="flex flex-col items-centers h-screen relative">
       <Banner />

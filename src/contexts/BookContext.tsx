@@ -4,7 +4,7 @@ import { getBooksObserver } from "@/services/observers/booksObservers";
 import axios from "axios";
 import { createContext, Dispatch, ReactNode, SetStateAction, useState } from "react";
 
-interface BookType {
+export interface BookType {
   id: string,
   volumeInfo: {
     title: string,
@@ -55,7 +55,8 @@ export function BookProvider({ children } : { children: ReactNode }) {
           key: process.env.GOOGLE_BOOKS_APIKEY
         }
       });
-
+      
+      console.log(res.data.items);
       return res.data.items;
     } catch (error) {
       console.log(error);
