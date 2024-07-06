@@ -3,16 +3,23 @@ import { addBooksAction, BooksGetType, getBooksAction } from "@/services/actions
 import { getBooksObserver } from "@/services/observers/booksObservers";
 import { createContext, Dispatch, ReactNode, SetStateAction, useState } from "react";
 
-interface FormValues {
-  title: string,
-  author: string
+export interface BookType {
+  id: string,
+  volumeInfo: {
+    title: string,
+    authors: string[],
+    imageLinks: {
+    smallThumbnail: string,
+    thumbnail: string
+    }
+  }
 }
 
 interface BookContextType {
   books: BooksGetType[] | [],
   setBooks: Dispatch<SetStateAction<BooksGetType[] | []>>,
   getAllBooks: () => Promise<void>,
-  addBook: (data: FormValues) => void
+  addBook: (data: BookType) => void
 }
 
 export const BookContext = createContext({} as BookContextType);
@@ -25,7 +32,7 @@ export function BookProvider({ children } : { children: ReactNode }) {
     setBooks(data);
   }
 
-  function addBook(data: FormValues) {
+  function addBook(data: BookType) {
     addBooksAction(data);
     setBooks(getBooksObserver());
   }

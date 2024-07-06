@@ -11,8 +11,15 @@ import { FaPlus } from "react-icons/fa6";
 import { z } from "zod";
 
 const formSchema = z.object({
-  title: z.string(),
-  author: z.string()
+  id: z.string(),
+  volumeInfo: z.object({
+    title: z.string(),
+    authors: z.array(z.string()),
+    imageLinks: z.object({
+      smallThumbnail: z.string(),
+      thumbnail: z.string()
+    })
+  })
 });
 
 export default function AddBooks() {
@@ -21,8 +28,15 @@ export default function AddBooks() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: "",
-      author: ""
+      id: "",
+      volumeInfo: {
+        title: "",
+        authors: [""],
+        imageLinks: {
+          smallThumbnail: "",
+          thumbnail: ""
+        }
+      }
     }
   });
 
@@ -43,7 +57,7 @@ export default function AddBooks() {
               <div className="flex flex-col gap-4">
                 <FormField
                   control={form.control}
-                  name="title"
+                  name="volumeInfo.title"
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
@@ -55,7 +69,7 @@ export default function AddBooks() {
                 />
                 <FormField
                   control={form.control}
-                  name="author"
+                  name="volumeInfo.authors"
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>

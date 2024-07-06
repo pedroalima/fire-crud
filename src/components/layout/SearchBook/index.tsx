@@ -3,29 +3,19 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { BookContext, BookType } from "@/contexts/BookContext";
 import { getGoogleBooks } from "@/services/dataAccess/googleBooksAccess";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
-export interface BookType {
-  id: string,
-  volumeInfo: {
-    title: string,
-    authors: string[],
-    imageLinks: {
-    smallThumbnail: string,
-    thumbnail: string
-    }
-  }
-}
 
 export const formSchema = z.object({
   title: z.string()
 });
 
 export default function SearchBook() {
+  const { addBook } = useContext(BookContext);
   const [ searchResult, setSearchResult ] = useState<BookType[] | []>([]);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -37,6 +27,10 @@ export default function SearchBook() {
 
   async function onSubmit(value: z.infer<typeof formSchema>) {
     setSearchResult(await getGoogleBooks(value.title));
+  }
+
+  function handleAddBook(book: BookType) {
+    addBook(book);
   }
 
   return (
@@ -74,8 +68,8 @@ export default function SearchBook() {
                 <img src={book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title} />
               </div>
             </CardContent>
-            <CardFooter className="">
-              <Button className="w-full">Adicionar</Button>
+            <CardFooter>
+              <Button onClick={() => handleAddBook(book)} className="w-full">Adicionar</Button>
             </CardFooter>
           </Card>
         ))}

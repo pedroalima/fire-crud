@@ -1,5 +1,7 @@
 "use client";
+import AddBooks from "@/components/layout/AddBooks";
 import Banner from "@/components/layout/Banner";
+import BookList from "@/components/layout/BookList";
 import SearchBook from "@/components/layout/SearchBook";
 
 export default function Home() {
@@ -9,9 +11,9 @@ export default function Home() {
       <SearchBook />
       <div>
         <h2>Meus Livros</h2>
-        {/* <BookList /> */}
+        <BookList />
       </div>
-      {/* <AddBooks /> */}
+      <AddBooks />
     </main>
   );
 }
