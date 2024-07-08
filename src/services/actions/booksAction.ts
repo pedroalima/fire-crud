@@ -1,11 +1,6 @@
+import { BookType } from "@/contexts/BookContext";
 import { DocumentData } from "firebase/firestore";
 import { addBooksAccess, deleteBooksAccess, getBooksAccess, setBooksAccess, updateBooksAccess } from "../dataAccess/booksAccess";
-
-export interface BooksType {
-  title: string,
-  author: string,
-  bookId: string
-}
 
 export interface BooksAddType {
   book?: DocumentData,
@@ -13,20 +8,20 @@ export interface BooksAddType {
   author: string
 }
 
-export interface BooksGetType {
-  book: DocumentData,
-  title: string,
-  author: string,
-  id: string
-}
+// export interface BooksGetType {
+//   book: DocumentData,
+//   title: string,
+//   author: string,
+//   id: string
+// }
 
 export async function getBooksAction() {
   const response = await getBooksAccess();
-  const books: BooksGetType[] = [];
+  const books: BookType[] = [];
   
   response.forEach((doc) => {
     books.push({
-      ...doc.data() as BooksGetType,
+      ...doc.data() as BookType,
       id: doc.id
     });
   });

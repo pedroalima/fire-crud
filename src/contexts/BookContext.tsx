@@ -1,5 +1,5 @@
 "use client";
-import { addBooksAction, BooksGetType, getBooksAction } from "@/services/actions/booksAction";
+import { addBooksAction, getBooksAction } from "@/services/actions/booksAction";
 import { getBooksObserver } from "@/services/observers/booksObservers";
 import { createContext, Dispatch, ReactNode, SetStateAction, useState } from "react";
 
@@ -16,8 +16,8 @@ export interface BookType {
 }
 
 interface BookContextType {
-  books: BooksGetType[] | [],
-  setBooks: Dispatch<SetStateAction<BooksGetType[] | []>>,
+  books: BookType[] | [],
+  setBooks: Dispatch<SetStateAction<BookType[] | []>>,
   getAllBooks: () => Promise<void>,
   addBook: (data: BookType) => void
 }
@@ -25,7 +25,7 @@ interface BookContextType {
 export const BookContext = createContext({} as BookContextType);
 
 export function BookProvider({ children } : { children: ReactNode }) {
-  const [ books, setBooks ] = useState<BooksGetType[] | []>([]);
+  const [ books, setBooks ] = useState<BookType[] | []>([]);
 
   async function getAllBooks() {
     const data = await getBooksAction();
