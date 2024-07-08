@@ -9,10 +9,7 @@ export default function Home() {
     <main className="flex flex-col items-centers h-screen relative">
       <Banner />
       <SearchBook />
-      <div>
-        <h2>Meus Livros</h2>
-        <BookList />
-      </div>
+      <BookList />
       <AddBooks />
     </main>
   );

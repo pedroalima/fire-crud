@@ -23,7 +23,7 @@ export interface BooksGetType {
 export async function getBooksAction() {
   const response = await getBooksAccess();
   const books: BooksGetType[] = [];
-
+  
   response.forEach((doc) => {
     books.push({
       ...doc.data() as BooksGetType,

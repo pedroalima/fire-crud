@@ -13,21 +13,24 @@ export default function BookList() {
   }, [books]);
 
   return (
-    <ul className="bg-slate-800 p-6 rounded-lg flex gap-4">
-      {books && books.map((book: BooksGetType) => (
-        <Card key={book.id} className="w-[300px]">
-          <CardHeader>
-            <CardTitle>{book.title}</CardTitle>
-            <CardDescription>{book.author}</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <h3>image</h3>
-          </CardContent>
-          <CardFooter className="flex justify-between">
-            <Button variant="outline" onClick={() => deleteBooksAction(book.id)}>Deletar</Button>
-          </CardFooter>
-        </Card>
-      ))}
-    </ul>
+    <section>
+      <h2>Meus Livros</h2>
+      <ul className="bg-slate-800 p-6 rounded-lg flex gap-4">
+        {books && books.map((book: BooksGetType) => (
+          <Card key={book.id} className="w-[300px]">
+            <CardHeader>
+              <CardTitle>{book.title}</CardTitle>
+              <CardDescription>{book.author}</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <h3>image</h3>
+            </CardContent>
+            <CardFooter className="flex justify-between">
+              <Button variant="outline" onClick={() => deleteBooksAction(book.id)}>Deletar</Button>
+            </CardFooter>
+          </Card>
+        ))}
+      </ul>
+    </section>
   );
 }
