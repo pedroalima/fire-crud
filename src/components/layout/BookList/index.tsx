@@ -23,7 +23,7 @@ export default function BookList() {
               <CardDescription>{book.volumeInfo.authors}</CardDescription>
             </CardHeader>
             <CardContent>
-              <img src={book.volumeInfo.imageLinks.thumbnail} className="w-[150px] h-[150px]" alt={book.volumeInfo.title} />
+              <img src={book.volumeInfo.imageLinks.thumbnail} className="w-[150px] h-auto" alt={book.volumeInfo.title} />
             </CardContent>
             <CardFooter className="flex justify-between">
               <Button variant="outline" onClick={() => deleteBooksAction(book.id)}>Deletar</Button>
