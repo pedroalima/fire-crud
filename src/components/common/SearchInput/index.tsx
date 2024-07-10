@@ -13,7 +13,7 @@ export const formSchema = z.object({
 });
 
 export default function SearchInput() {
-  const { setSearchResult } = useContext(BookContext);
+  const { setSearchResult, setIsLoading } = useContext(BookContext);
     
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -23,7 +23,15 @@ export default function SearchInput() {
   });
     
   async function onSubmit(value: z.infer<typeof formSchema>) {
-    setSearchResult(await getGoogleBooks(value.title));
+    setIsLoading(true);
+    try {
+      const res = await getGoogleBooks(value.title);
+      setSearchResult(res);
+    } catch (error) {
+      console.log();
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (

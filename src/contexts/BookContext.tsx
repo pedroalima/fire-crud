@@ -22,6 +22,8 @@ interface BookContextType {
   addBook: (data: BookType) => void
   searchResult: BookType[] | [],
   setSearchResult: Dispatch<SetStateAction<BookType[] | []>>,
+  isLoading: null | boolean,
+  setIsLoading: Dispatch<SetStateAction<null | boolean>>
 }
 
 export const BookContext = createContext({} as BookContextType);
@@ -29,10 +31,15 @@ export const BookContext = createContext({} as BookContextType);
 export function BookProvider({ children } : { children: ReactNode }) {
   const [ books, setBooks ] = useState<BookType[] | []>([]);
   const [ searchResult, setSearchResult ] = useState<BookType[] | []>([]);
+  const [ isLoading, setIsLoading ] = useState<null | boolean>(null);
 
   async function getAllBooks() {
-    const data = await getBooksAction();
-    setBooks(data);
+    try {
+      const data = await getBooksAction();
+      setBooks(data);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   function addBook(data: BookType) {
@@ -41,7 +48,17 @@ export function BookProvider({ children } : { children: ReactNode }) {
   }
 
   return (
-    <BookContext.Provider value={{ books, setBooks, getAllBooks, addBook, searchResult, setSearchResult }}>
+    <BookContext.Provider 
+      value={{ 
+        books, 
+        setBooks, 
+        getAllBooks, 
+        addBook, 
+        searchResult, 
+        setSearchResult, 
+        isLoading, 
+        setIsLoading 
+      }}>
       {children}
     </BookContext.Provider>
   );
