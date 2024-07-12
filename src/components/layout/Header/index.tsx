@@ -1,11 +1,9 @@
-import SearchInput from "@/components/common/SearchInput";
 
 
 export default function Header() {
   return (
     <header className="flex justify-between items-center w-full py-10 px-40 bg-blue-500">
       <h1 className="text-2xl text-white font-bold">MyBooks</h1>
-      <SearchInput />
     </header>
   );
 }

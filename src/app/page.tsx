@@ -1,14 +1,14 @@
 "use client";
+import AddBooks from "@/components/layout/AddBooks";
 import Banner from "@/components/layout/Banner";
-import SearchBook from "@/components/layout/SearchBook";
+import BookList from "@/components/layout/BookList";
 
 export default function Home() {
   return (
     <main className="flex flex-col items-centers h-screen relative">
       <Banner />
-      <SearchBook />
-      {/* <BookList /> */}
-      {/* <AddBooks /> */}
+      <BookList />
+      <AddBooks />
     </main>
   );
 }
