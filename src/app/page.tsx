@@ -5,7 +5,7 @@ import BookList from "@/components/layout/BookList";
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-centers relative bg-slate-50">
+    <main className="flex flex-col items-centers relative">
       <Banner />
       <BookList />
       <AddBooks />

@@ -1,6 +1,6 @@
 "use client";
 import SearchInput from "@/components/common/SearchInput";
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { FaPlus } from "react-icons/fa6";
 import BookResult from "../BookResult";
 
@@ -50,11 +50,6 @@ export default function AddBooks() {
           <SearchInput />
         </DialogHeader>
         <BookResult />
-        <DialogFooter>
-          <DialogClose>
-            <span className="text-sm p-2 cursor-pointer rounded-lg border border-slate-200">Cancelar</span>
-          </DialogClose>
-        </DialogFooter>
         {/* <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col items-center p-3 rounded-lg">
             <DrawerHeader className="px-40 flex flex-col gap-5">

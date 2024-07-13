@@ -11,7 +11,9 @@ export default function BookList() {
 
   useEffect(() => {
     getAllBooks();
-  }, [books]);
+  }, []);
+
+  console.log(books && books);
 
   return (
     <section>
@@ -31,6 +33,7 @@ export default function BookList() {
                 title={book.volumeInfo.title}
                 author={book.volumeInfo.authors}
                 image={book.volumeInfo.imageLinks.smallThumbnail}
+                description={book.volumeInfo.description}
               />
               <Button variant="outline" onClick={() => deleteBooksAction(book.id)}>Deletar</Button>
             </CardFooter>
