@@ -2,7 +2,7 @@
 import SearchInput from "@/components/common/SearchInput";
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { FaPlus } from "react-icons/fa6";
-import SearchBook from "../SearchBook";
+import BookResult from "../BookResult";
 
 // const formSchema = z.object({
 //   id: z.string(),
@@ -49,7 +49,7 @@ export default function AddBooks() {
           <DialogDescription className="px-10 text-center">Você tem acesso a um dos maiores banco de dados do mundo, com o GoogleBooks</DialogDescription>
           <SearchInput />
         </DialogHeader>
-        <SearchBook />
+        <BookResult />
         <DialogFooter>
           <DialogClose>
             <span className="text-sm p-2 cursor-pointer rounded-lg border border-slate-200">Cancelar</span>

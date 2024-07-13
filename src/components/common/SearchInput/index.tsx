@@ -36,7 +36,7 @@ export default function SearchInput() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-3/5">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/5">
         <FormField
           control={form.control}
           name="title"
