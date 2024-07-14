@@ -35,11 +35,14 @@ export function BookProvider({ children } : { children: ReactNode }) {
   const [ isLoading, setIsLoading ] = useState<null | boolean>(null);
 
   async function getAllBooks() {
+    setIsLoading(true);
     try {
       const data = await getBooksAction();
       setBooks(data);
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   }
 

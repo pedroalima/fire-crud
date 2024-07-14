@@ -25,8 +25,8 @@ export default function BookList() {
       <ul className="p-6 rounded-lg flex gap-4">
         {isLoading ? (
           Array.from({ length: 3}).map((_, i) =>
-            <div key={i} className="flex flex-col items-center space-y-6 w-[25%] h-[415px] border border-slate-200 rounded-xl py-8 px-4">
-              <Skeleton className="w-[170px] h-[170px] self-center rounded-xl bg-slate-200" />
+            <div key={i} className="flex flex-col items-center space-y-6 w-[23%] border border-slate-200 rounded-xl py-8 px-4">
+              <Skeleton className="w-[170px] h-[170px] self-center bg-slate-200" />
               <div className="space-y-4">
                 <Skeleton className="h-4 w-[180px] bg-slate-200" />
                 <Skeleton className="h-4 w-[160px] bg-slate-200" />
