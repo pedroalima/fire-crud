@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <BookProvider>
-        <body className={inter.className}>
+        <body className={`${inter.className} bg-slate-50`}>
           <Header />
           {children}
         </body>

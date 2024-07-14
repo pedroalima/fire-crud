@@ -49,6 +49,7 @@ export default function BookList() {
                   title={book.volumeInfo.title}
                   author={book.volumeInfo.authors}
                   image={book.volumeInfo.imageLinks.smallThumbnail}
+                  description={book.volumeInfo.description}
                 />
                 <Button variant="outline" onClick={() => handleDelete(book.id)}>Deletar</Button>
               </CardFooter>
