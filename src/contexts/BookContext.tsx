@@ -10,10 +10,11 @@ export interface BookType {
     authors: string[],
     description: string,
     imageLinks: {
-    smallThumbnail: string,
-    thumbnail: string
-    }
-  }
+      smallThumbnail: string,
+      thumbnail: string
+    },
+    pageCount: number
+}
 }
 
 interface BookContextType {
@@ -38,6 +39,7 @@ export function BookProvider({ children } : { children: ReactNode }) {
     setIsLoading(true);
     try {
       const data = await getBooksAction();
+      console.log(data);
       setBooks(data);
     } catch (error) {
       console.log(error);
