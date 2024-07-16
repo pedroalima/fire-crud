@@ -1,14 +1,16 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
 import { Skeleton } from "@/components/ui/skeleton";
 import { BookContext, BookType } from "@/contexts/BookContext";
 import { deleteBooksAction } from "@/services/actions/booksAction";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import BookDescription from "../BookDescription";
 
 export default function BookList() {
   const { books, getAllBooks, isLoading} = useContext(BookContext);
+  const [ numberPageRead, setNumberPageRead ] = useState(100);
 
   useEffect(() => {
     getAllBooks();
@@ -44,15 +46,21 @@ export default function BookList() {
               <CardContent className="w-[50%] p-4">
                 <img src={book.volumeInfo.imageLinks.thumbnail} className="w-full h-full" alt={book.volumeInfo.title} />
               </CardContent>
-              <CardFooter className="flex justify-between w-full p-4">
-                <BookDescription 
-                  title={book.volumeInfo.title}
-                  author={book.volumeInfo.authors}
-                  image={book.volumeInfo.imageLinks.smallThumbnail}
-                  description={book.volumeInfo.description}
-                  pageCount={book.volumeInfo.pageCount}
-                />
-                <Button variant="outline" onClick={() => handleDelete(book.id)}>Deletar</Button>
+              <CardFooter className="flex flex-col gap-4 w-full pt-6">
+                <div className="flex w-full gap-2">
+                  <p>{Math.floor((numberPageRead * 100) / book.volumeInfo.pageCount)}%</p> 
+                  <Progress value={Math.floor((numberPageRead * 100) / book.volumeInfo.pageCount)} />
+                </div>
+                <div className="flex justify-between w-full">
+                  <BookDescription 
+                    title={book.volumeInfo.title}
+                    author={book.volumeInfo.authors}
+                    image={book.volumeInfo.imageLinks.smallThumbnail}
+                    description={book.volumeInfo.description}
+                    pageCount={book.volumeInfo.pageCount}
+                  />
+                  <Button variant="outline" onClick={() => handleDelete(book.id)}>Deletar</Button>
+                </div>
               </CardFooter>
             </Card>
           )

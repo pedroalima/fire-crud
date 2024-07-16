@@ -1,5 +1,4 @@
 import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Progress } from "@/components/ui/progress";
 import { MdMenuBook } from "react-icons/md";
 
 interface BookType { 
@@ -30,8 +29,6 @@ export default function BookDescription({ title, author, image, description, pag
               <DialogDescription>{description}</DialogDescription>
             </div>
             <div className="flex justify-between">
-              <p>{Math.floor((224 * 100) / pageCount)}%</p>
-              <Progress value={50} className="w-[60%]" />
               <DialogDescription className="self-end">{pageCount} páginas</DialogDescription>
             </div>
           </div>
