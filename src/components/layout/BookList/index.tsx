@@ -5,12 +5,11 @@ import { Progress } from "@/components/ui/progress";
 import { Skeleton } from "@/components/ui/skeleton";
 import { BookContext, BookType } from "@/contexts/BookContext";
 import { deleteBooksAction } from "@/services/actions/booksAction";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import BookDescription from "../BookDescription";
 
 export default function BookList() {
   const { books, getAllBooks, isLoading} = useContext(BookContext);
-  const [ numberPageRead, setNumberPageRead ] = useState(100);
 
   useEffect(() => {
     getAllBooks();
@@ -48,8 +47,8 @@ export default function BookList() {
               </CardContent>
               <CardFooter className="flex flex-col gap-4 w-full pt-6">
                 <div className="flex w-full gap-2">
-                  <p>{Math.floor((numberPageRead * 100) / book.volumeInfo.pageCount)}%</p> 
-                  <Progress value={Math.floor((numberPageRead * 100) / book.volumeInfo.pageCount)} />
+                  <p>{Math.floor((150 * 100) / book.volumeInfo.pageCount)}%</p> 
+                  <Progress value={Math.floor((150 * 100) / book.volumeInfo.pageCount)} />
                 </div>
                 <div className="flex justify-between w-full">
                   <BookDescription 
