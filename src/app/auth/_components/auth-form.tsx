@@ -3,13 +3,19 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { auth } from "@/services/firebaseConfig";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 
 export function AuthForm() {
   const form = useForm();
+  const [ user, loading, error ] = useAuthState(auth);
 
   const handleSubmit = form.handleSubmit ((data) => {
     console.log(data);
+    console.log(user);
+    console.log(loading);
+    console.log(error);
   });
 
   return (

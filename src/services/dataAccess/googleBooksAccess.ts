@@ -5,7 +5,7 @@ export async function getGoogleBooks(title: string) {
     const res = await axios.get("https://www.googleapis.com/books/v1/volumes", {
       params:{
         q: title,
-        key: process.env.GOOGLE_BOOKS_APIKEY
+        key: process.env.NEXT_PUBLIC_GOOGLE_BOOKS_APIKEY
       }
     });
       
