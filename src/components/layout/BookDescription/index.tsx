@@ -9,8 +9,6 @@ interface BookType {
   pageCount: number
 }
 
-
-
 export default function BookDescription({ title, author, image, description, pageCount } : BookType) {
   return (
     <Dialog>

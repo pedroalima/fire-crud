@@ -1,3 +1,4 @@
+import Header from "@/components/layout/Header";
 import { BookProvider } from "@/contexts/BookContext";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -19,6 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <BookProvider>
         <body className={`${inter.className} bg-slate-50`}>
+          <Header />
           {children}
         </body>
       </BookProvider>
