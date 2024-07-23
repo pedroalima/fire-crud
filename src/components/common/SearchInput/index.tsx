@@ -43,7 +43,7 @@ export default function SearchInput() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input placeholder="Qual livro?" className="bg-white rounded-2xl" {...field} />
+                <Input placeholder="Qual livro?" className="pl-8 w-full" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
