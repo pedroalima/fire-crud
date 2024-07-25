@@ -43,7 +43,7 @@ export default function SearchInput() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input placeholder="Qual livro?" className="pl-8 w-full" {...field} />
+                <Input placeholder="Qual livro temos para hoje?" className="pl-8 w-full" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

@@ -1,12 +1,10 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import { Skeleton } from "@/components/ui/skeleton";
 import { BookContext, BookType } from "@/contexts/BookContext";
 import { deleteBooksAction } from "@/services/actions/booksAction";
 import { useContext, useEffect } from "react";
-import BookDescription from "../BookDescription";
+import BookCard from "../BookCard";
 
 export default function BookList() {
   const { books, getAllBooks, isLoading} = useContext(BookContext);
@@ -21,9 +19,8 @@ export default function BookList() {
   };
   
   return (
-    <section>
-      <h2 className="text-4xl">Meus Livros</h2>
-      <ul className="p-6 rounded-lg flex gap-4">
+    <div className="flex flex-col justify-center items-center">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {isLoading ? (
           Array.from({ length: 3}).map((_, i) =>
             <div key={i} className="flex flex-col items-center space-y-6 w-[23%] border border-slate-200 rounded-xl py-8 px-4">
@@ -37,34 +34,12 @@ export default function BookList() {
           )
         ) : (
           books && books.map((book: BookType) => (
-            <Card key={book.id} className="w-[23%] flex flex-col justify-between items-center shadow-xl">
-              <CardHeader className="p-4">
-                <CardTitle>{book.volumeInfo.title}</CardTitle>
-                <CardDescription>{book.volumeInfo.authors}</CardDescription>
-              </CardHeader>
-              <CardContent className="w-[50%] p-4">
-                <img src={book.volumeInfo.imageLinks.thumbnail} className="w-full h-full" alt={book.volumeInfo.title} />
-              </CardContent>
-              <CardFooter className="flex flex-col gap-4 w-full pt-6">
-                <div className="flex w-full gap-2">
-                  <p>{Math.floor((150 * 100) / book.volumeInfo.pageCount)}%</p> 
-                  <Progress value={Math.floor((150 * 100) / book.volumeInfo.pageCount)} />
-                </div>
-                <div className="flex justify-between w-full">
-                  <BookDescription 
-                    title={book.volumeInfo.title}
-                    author={book.volumeInfo.authors}
-                    image={book.volumeInfo.imageLinks.smallThumbnail}
-                    description={book.volumeInfo.description}
-                    pageCount={book.volumeInfo.pageCount}
-                  />
-                  <Button variant="outline" onClick={() => handleDelete(book.id)}>Deletar</Button>
-                </div>
-              </CardFooter>
-            </Card>
+            <BookCard book={book} key={book.id}>
+              <Button variant="outline" onClick={() => handleDelete(book.id)}>Deletar</Button>
+            </BookCard>
           )
           ))}
       </ul>
-    </section>
+    </div>
   );
 }
