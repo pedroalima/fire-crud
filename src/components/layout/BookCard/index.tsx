@@ -6,22 +6,22 @@ export default function BookCard({ children, book } : { children: ReactNode, boo
   return (
     <div key={book.id} className="bg-background flex flex-col justify-between border rounded-lg overflow-hidden group">
       <img
-        src={book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.thumbnail}
+        src={book.volumeInfo.imageLinks?.thumbnail}
         alt={book.volumeInfo.title}
         width={300}
         height={400}
         className="w-full h-[250px] object-scale-down"
       />
-      <div className="p-4">
+      <div className="px-6 py-4">
         <h3 className="text-lg font-semibold line-clamp-2">{book.volumeInfo.title}</h3>
-        {book.volumeInfo.authors && book.volumeInfo.authors.map((item, i) => (
+        {book.volumeInfo.authors?.map((item, i) => (
           <p key={i} className="text-sm text-muted-foreground line-clamp-1">{item}</p>
         ))}
-        <div className="flex justify-between w-full">
+        <div className="flex justify-between w-full mt-4">
           <BookDescription
             title={book.volumeInfo.title}
             author={book.volumeInfo.authors}
-            image={book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.smallThumbnail}
+            image={book.volumeInfo.imageLinks?.smallThumbnail}
             description={book.volumeInfo.description}
             pageCount={book.volumeInfo.pageCount}
           />
