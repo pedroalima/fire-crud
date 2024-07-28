@@ -1,4 +1,5 @@
 import Header from "@/components/layout/Header";
+import { Toaster } from "@/components/ui/toaster";
 import { BookProvider } from "@/contexts/BookContext";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -22,6 +23,7 @@ export default function RootLayout({
         <body className={`${inter.className} bg-slate-50`}>
           <Header />
           {children}
+          <Toaster />
         </body>
       </BookProvider>
     </html>

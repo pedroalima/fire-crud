@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
 import { BookContext, BookType } from "@/contexts/BookContext";
 import { deleteBooksAction } from "@/services/actions/booksAction";
 import { useContext, useEffect } from "react";
@@ -8,6 +9,7 @@ import SkeletonBookCard from "../SkeletonBookCard";
 
 export default function BookList() {
   const { books, getAllBooks, isLoading} = useContext(BookContext);
+  const { toast } = useToast();
 
   useEffect(() => {
     getAllBooks();
@@ -28,7 +30,16 @@ export default function BookList() {
         ) : (
           books.map((book: BookType) => (
             <BookCard book={book} key={book.id}>
-              <Button variant="outline" onClick={() => handleDelete(book.id)}>Deletar</Button>
+              <Button
+                variant="outline"
+                onClick={() => {
+                  handleDelete(book.id),
+                  toast({
+                    title: "Deletado com Sucesso!",
+                    description: `O livro ${book.volumeInfo.title} foi retirado da sua lista de favoritos.`,
+                  });
+                }}
+              >Deletar</Button>
             </BookCard>
           )))}
       </ul>
