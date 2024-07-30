@@ -2,18 +2,16 @@
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { BookContext, BookType } from "@/contexts/BookContext";
+import { useBooks } from "@/hooks/useBooks";
 import { deleteBooksAction } from "@/services/actions/booksAction";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import BookCard from "../BookCard";
 import SkeletonBookCard from "../SkeletonBookCard";
 
 export default function BookList() {
-  const { books, getAllBooks, isLoading} = useContext(BookContext);
+  const { books, isLoading} = useBooks();
+  const { getAllBooks } = useContext(BookContext);
   const { toast } = useToast();
-
-  useEffect(() => {
-    getAllBooks();
-  }, []);
 
   const handleDelete = async (book: string) => {
     await deleteBooksAction(book);
@@ -28,20 +26,26 @@ export default function BookList() {
             <SkeletonBookCard key={i} />
           )
         ) : (
-          books.map((book: BookType) => (
-            <BookCard book={book} key={book.id}>
-              <Button
-                variant="outline"
-                onClick={() => {
-                  handleDelete(book.id),
-                  toast({
-                    title: "Deletado com Sucesso!",
-                    description: `O livro ${book.volumeInfo.title} foi retirado da sua lista de favoritos.`,
-                  });
-                }}
-              >Deletar</Button>
-            </BookCard>
-          )))}
+          books.length == 0 ? (
+            <div className="flex justify-center items-center">
+              <h3>Você ainda não favoritou livros</h3>
+            </div>
+          ) : ( 
+            books.map((book: BookType) => (
+              <BookCard book={book} key={book.id}>
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    handleDelete(book.id),
+                    toast({
+                      title: "Deletado com Sucesso!",
+                      description: `O livro ${book.volumeInfo.title} foi retirado da sua lista de favoritos.`,
+                    });
+                  }}
+                >Deletar</Button>
+              </BookCard>
+            ))))
+        }
       </ul>
     </div>
   );
