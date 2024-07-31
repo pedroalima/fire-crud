@@ -20,7 +20,7 @@ export default function BookList() {
   
   return (
     <div className="flex flex-col justify-center items-center py-2">
-      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-[81vw] min-h-[30vh]">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-[81vw] min-h-[28vh]">
         {isLoading ? (
           Array.from({ length: 4 }).map((_, i) =>
             <SkeletonBookCard key={i} />
