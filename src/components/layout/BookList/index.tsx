@@ -19,16 +19,16 @@ export default function BookList() {
   };
   
   return (
-    <div className="flex flex-col justify-center items-center">
-      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div className="flex flex-col justify-center items-center py-2">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-[81vw] min-h-[30vh]">
         {isLoading ? (
           Array.from({ length: 4 }).map((_, i) =>
             <SkeletonBookCard key={i} />
           )
         ) : (
           books.length == 0 ? (
-            <div className="flex justify-center items-center">
-              <h3>Você ainda não favoritou livros</h3>
+            <div className="col-span-4 flex justify-center items-center">
+              <h3>Você ainda não tem livros registrados, adicione um livro.</h3>
             </div>
           ) : ( 
             books.map((book: BookType) => (

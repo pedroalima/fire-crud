@@ -4,7 +4,7 @@ import BookDescription from "../BookDescription";
 
 export default function BookCard({ children, book } : { children: ReactNode, book: BookType}) {
   return (
-    <div key={book.id} className="bg-background flex flex-col justify-between border rounded-lg overflow-hidden group">
+    <div key={book.id} className="bg-background flex flex-col justify-between border rounded-lg overflow-hidden group w-full">
       <img
         src={book.volumeInfo.imageLinks?.thumbnail}
         alt={book.volumeInfo.title}
