@@ -28,7 +28,7 @@ export default function BookList() {
         ) : (
           books.length == 0 ? (
             <div className="col-span-4 flex justify-center items-center">
-              <h3>Você ainda não tem livros registrados, adicione um livro.</h3>
+              <h3 className="text-muted-foreground">Você ainda não tem livros registrados, adicione um.</h3>
             </div>
           ) : ( 
             books.map((book: BookType) => (

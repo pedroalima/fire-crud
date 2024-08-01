@@ -11,9 +11,9 @@ export default function AddBooks() {
         <FaPlus className="text-white text-2xl" />
       </DialogTrigger>
       <DialogContent className="bg-slate-50">
-        <DialogHeader className="flex flex-col items-center gap-3">
+        <DialogHeader className="flex flex-col items-center gap-2 md:gap-3 py-4 md:p-0">
           <DialogTitle className="text-center">Pesquise aqui qualquer livro que desejar</DialogTitle>
-          <DialogDescription className="px-10 text-center">Você tem acesso a um dos maiores banco de dados do mundo, com o GoogleBooks</DialogDescription>
+          <DialogDescription className="md:px-10 text-center">Você tem acesso a um dos maiores banco de dados do mundo, com o GoogleBooks</DialogDescription>
           <SearchInput />
         </DialogHeader>
         <BookResult />

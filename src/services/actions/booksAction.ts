@@ -8,13 +8,6 @@ export interface BooksAddType {
   author: string
 }
 
-// export interface BooksGetType {
-//   book: DocumentData,
-//   title: string,
-//   author: string,
-//   id: string
-// }
-
 export async function getBooksAction() {
   const response = await getBooksAccess();
   const books: BookType[] = [];

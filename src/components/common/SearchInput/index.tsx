@@ -28,7 +28,7 @@ export default function SearchInput() {
       const res = await getGoogleBooks(value.title);
       setSearchResult(res);
     } catch (error) {
-      console.log();
+      console.log(error);
     } finally {
       setIsLoading(false);
     }
@@ -36,14 +36,14 @@ export default function SearchInput() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/5">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="md:w-2/5">
         <FormField
           control={form.control}
           name="title"
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input placeholder="Qual livro temos para hoje?" className="pl-8 w-full" {...field} />
+                <Input placeholder="Qual livro temos para hoje?" className="pl-6 w-full" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

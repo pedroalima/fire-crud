@@ -8,8 +8,6 @@ export async function getGoogleBooks(title: string) {
         key: process.env.NEXT_PUBLIC_GOOGLE_BOOKS_APIKEY
       }
     });
-      
-    console.log(res.data.items);
     return res.data.items;
   } catch (error) {
     console.log(error);
