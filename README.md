@@ -1,8 +1,8 @@
 # MyBooks
 
-Uma aplicação de página única (SPA), para criar sua lista de livros preferidos.
+Uma aplicação de página única (SPA) para criar sua lista de livros preferidos.
 
-A página web é de minha autoria e foi inspirada em outras aplicações já existentes, adaptando seus designs e recursos. A aplicação foi desenvolvida utilizando tecnologias como TypeScript, Next.js, Firebase, TailwindCSS.
+A página web foi criada por mim e inspirada em outras aplicações já existentes, adaptando seus designs e recursos. A aplicação foi desenvolvida utilizando tecnologias como TypeScript, Next, Firebase, TailwindCSS e GoogleBooksAPI.
 
 <!-- ## Índice
 
@@ -12,37 +12,31 @@ A página web é de minha autoria e foi inspirada em outras aplicações já exi
   - [Propriedades e Tecnologias](#propriedades-e-tecnologias)
   - [Meu aprendizado](#meu-aprendizado)
 - [Rodando o projeto](#rodando-o-projeto)
-- [Autor](#autor)
+- [Autor](#autor) -->
 
 </br>
 
 ## Screenshots
 
-![#](./public/desktop-view.png)
+![#](./public/frame1.png)
 
 </br>
 
 ## Objetivos
 
-O principal objetivo deste projeto foi elaborar uma SPA do meu portfólio com uma página administrativa, conectado a uma API.
+O principal objetivo deste projeto foi elaborar um CRUD utilizando o Firebase, com sua ferramenta Cloud Firestore.
 
 Os usuários têm a capacidade de:
-- Como cliente, é possível visualizar a pagina e navegar entre as opções do menu.
-- Como administrador, estão disponíveis, além da página inicial, outras duas: a de login e a administrativa. A primeira destina-se ao processo de autenticação e a segunda permite a edição das informações exibidas na página inicial.
-
-> OBS - Apenas o criador do projeto possui acesso à página administrativa.
+- Criar suas próprias listas de livros favoritos e obter mais informações sobre cada obra.
 
 </br>
 
 ## Minha caminhada
 
-- [x] Protótipo do design
-- [x] Estrutura de rotas front-end
-- [x] Estrutura de rotas back-end
-- [x] Conexão e seviços da API
-- [x] Modelo de objetos
-- [x] Controle de rotas público/privada
-- [x] Aplicação do design
+- [x] Configuração, conexão e serviços do banco de dados (Firebase)
+- [x] Conexão e serviços da API (Google Books API)
+- [x] Protótipo do design (V0)
+- [x] Desenvolvimento e estilização (Next e Shadcn)
 
 </br>
 
@@ -50,16 +44,20 @@ Os usuários têm a capacidade de:
 
 - TypeScript
 - Next.js
-- Mongoose
-- MongoDB
-- CSS
+- Firebase
 - TailwindCSS
-- Framer Motion
+- Google Books API
+- Shadcn
+- React Icons
+- Zod
+- Axios
+- ESLint
+- V0
 - Figma
 
 </br>
 
-## Meu aprendizado
+<!-- ## Meu aprendizado
 
 Ao me deparar com o banco de dados MongoDB pela primeira vez, aprendi sobre o aspecto de modelagem de objetos elaborado pelo Mongoose.
 
