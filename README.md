@@ -4,7 +4,7 @@ Uma aplicação de página única (SPA) para criar sua lista de livros preferido
 
 A página web foi criada por mim e inspirada em outras aplicações já existentes, adaptando seus designs e recursos. A aplicação foi desenvolvida utilizando tecnologias como TypeScript, Next, Firebase, TailwindCSS e GoogleBooksAPI.
 
-<!-- ## Índice
+## Índice
 
 - [Screenshots](#screenshots)
 - [Objetivos](#objetivos)
@@ -12,7 +12,7 @@ A página web foi criada por mim e inspirada em outras aplicações já existent
   - [Propriedades e Tecnologias](#propriedades-e-tecnologias)
   - [Meu aprendizado](#meu-aprendizado)
 - [Rodando o projeto](#rodando-o-projeto)
-- [Autor](#autor) -->
+- [Autor](#autor)
 
 </br>
 
@@ -57,69 +57,61 @@ Os usuários têm a capacidade de:
 
 </br>
 
-<!-- ## Meu aprendizado
+## Meu aprendizado
 
-Ao me deparar com o banco de dados MongoDB pela primeira vez, aprendi sobre o aspecto de modelagem de objetos elaborado pelo Mongoose.
+O Cloud Firestore é um banco de dados NoSQL flexível e escalonável. Minha primeira impressão foi bastante positiva, com uma experiência intuitiva, provavelmente devido à documentação bem estruturada.
 
-Após estabelecer a conexão com o banco de dados, é necessário criar um esquema para cada objeto:
+Para utilizar a ferramenta, basta criar sua conta no site do Firebase e configurar seu projeto no console da plataforma. Nas configurações, você encontrará uma máscara de conexão semelhante a esta:
 
 ```tsx
-import mongoose from "mongoose";
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 
-const HomeSchema = new mongoose.Schema({
-    mainText: String,
-    description: String,
-},
-{ timestamps: true });
+const apiKey = process.env.NEXT_PUBLIC_FIREBASE_APIKEY;
 
-const Home = mongoose.models.Home || mongoose.model("Home", HomeSchema);
+const firebaseConfig = {
+  apiKey: apiKey,
+  authDomain: "fire-crud-ba674.firebaseapp.com",
+  projectId: "fire-crud-ba674",
+  storageBucket: "fire-crud-ba674.appspot.com",
+  messagingSenderId: "862513445158",
+  appId: "1:862513445158:web:3fcd5127a51bec6b60a9e7"
+};
 
-export default Home;
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+export { db };
 ```
 
-Ao definir cada esquema, é necessário criar e exportar o modelo correspondente. Dessa forma, tudo está pronto para ser aplicado em cada rota.
+Com isso, você já terá acesso ao banco de dados e poderá criar os verbos de interação necessários.
 
 ```tsx
-import connectToDatabase from "@/database";
-import Home from "@/models/Home";
-import { NextRequest, NextResponse } from "next/server";
+import { collection, doc, DocumentData, getDocs, query, updateDoc } from "firebase/firestore";
+import { db } from "../firebaseConfig";
 
-export const dynamic = "force-dynamic";
+export async function getBooksAccess() {
+  const q = query(collection(db, "books"));
+  const response = await getDocs(q);
+  return response;
+}
 
-export async function POST(req: NextRequest) {
-    try {
-        await connectToDatabase();
-        const extractData = await req.json();
-        const saveData = await Home.create(extractData);
-
-        if (saveData) {
-            return NextResponse.json({
-                success: true,
-                message: "Data saved successfully",
-            });
-        } else {
-            return NextResponse.json({
-                success: false,
-                message: "Something goes wrong! Please try again",
-            });
-        }
-    } catch (error) {
-        console.log(error);
-
-        return NextResponse.json({
-            success: false,
-            message: "Something goes wrong! Please try again",
-        });
-    }
+export async function updateBooksAccess(body: DocumentData, id: string) {
+  const book = doc(db, "books", id);
+  const response = await updateDoc(book, body);
+  return response;
 }
 ```
 
-Veja mais detalhes na documentação oficial [aqui](https://mongoosejs.com/docs/guide.html)
+O Firebase estrutura seu banco de dados em coleções e documentos, onde os documentos estão dentro de cada coleção. Para acessar uma coleção, basta passar o banco de dados do projeto e o nome da coleção. Já para acessar um documento específico, além do banco e do nome da coleção, você precisa do ID do documento.
+
+Veja mais detalhes na [documentação oficial do Firebase](https://firebase.google.com/docs/firestore?hl=pt)
 </br>
 
 ## Rodando o projeto
 
-![#](./public/desktop.gif)
+![#](./public/mobile-view.webm)
 
 ### Acesse a aplicação via web [aqui!](https://portifolio-pedroalima.vercel.app/)
 
@@ -150,9 +142,9 @@ Ainda na pasta do projeto, execute o comando no terminal:
 ```bash
 npm run dev
 ```
-Isso iniciará o servidor de desenvolvimento Next.
+Isso iniciará o servidor de desenvolvimento do Next.js. Você ainda precisará criar seu projeto no console da plataforma do Firebase e alterar as informações da máscara de conexão, conforme já explicado acima.
 
-</br> -->
+</br>
 
 ## Autor
 

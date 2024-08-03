@@ -3,6 +3,7 @@
 import AddBooks from "@/components/layout/AddBooks";
 import BookList from "@/components/layout/BookList";
 import Footer from "@/components/layout/Footer";
+import { Toaster } from "@/components/ui/toaster";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
         </div>
         <BookList />
       </main>
+      <Toaster />
       <Footer />
     </>
   );
