@@ -18,7 +18,7 @@ A página web foi criada por mim e inspirada em outras aplicações já existent
 
 ## Screenshots
 
-![#](./public/frame1.png)
+![#](./frame1.png)
 
 </br>
 
@@ -111,7 +111,7 @@ Veja mais detalhes na [documentação oficial do Firebase](https://firebase.goog
 
 ## Rodando o projeto
 
-![#](./public/mobile-view.webm)
+![#](./mobile-view.gif)
 
 ### Acesse a aplicação via web [aqui!](https://portifolio-pedroalima.vercel.app/)
 
