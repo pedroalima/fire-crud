@@ -4,6 +4,8 @@ Uma aplicação de página única (SPA) para criar sua lista de livros preferido
 
 A página web foi criada por mim e inspirada em outras aplicações já existentes, adaptando seus designs e recursos. A aplicação foi desenvolvida utilizando tecnologias como TypeScript, Next, Firebase, TailwindCSS e GoogleBooksAPI.
 
+</br>
+
 ## Índice
 
 - [Screenshots](#screenshots)
@@ -107,13 +109,14 @@ export async function updateBooksAccess(body: DocumentData, id: string) {
 O Firebase estrutura seu banco de dados em coleções e documentos, onde os documentos estão dentro de cada coleção. Para acessar uma coleção, basta passar o banco de dados do projeto e o nome da coleção. Já para acessar um documento específico, além do banco e do nome da coleção, você precisa do ID do documento.
 
 Veja mais detalhes na [documentação oficial do Firebase](https://firebase.google.com/docs/firestore?hl=pt)
+
 </br>
 
 ## Rodando o projeto
 
 ![#](./public/mobile-view.gif)
 
-### Acesse a aplicação via web [aqui!](https://portifolio-pedroalima.vercel.app/)
+### Acesse a aplicação via web [aqui!](https://fire-crud-kappa.vercel.app/)
 
 #### Ou instale na sua máquina. Para conferir a versão final, é só realizar os seguintes passos:
 
@@ -142,7 +145,8 @@ Ainda na pasta do projeto, execute o comando no terminal:
 ```bash
 npm run dev
 ```
-Isso iniciará o servidor de desenvolvimento do Next.js. Você ainda precisará criar seu projeto no console da plataforma do Firebase e alterar as informações da máscara de conexão, conforme já explicado acima.
+
+Isso iniciará o servidor de desenvolvimento do Next.js. Você ainda precisará criar seu projeto no console da plataforma do Firebase e alterar as informações da máscara de conexão e atualizar as variáveis de ambiente, conforme já explicado acima.
 
 </br>
 
