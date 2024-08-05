@@ -61,6 +61,8 @@ Os usuários têm a capacidade de:
 
 ## Meu aprendizado
 
+Neste projeto, tive a oportunidade de colocar em prática conhecimentos sobre o banco de dados em nuvem do Firebase, a biblioteca de componentes customizáveis da Shadcn e o desenvolvimento de interfaces utilizando inteligência artificial da V0. Contudo, neste artigo, irei destacar algumas dicas sobre o Firebase.
+
 O Cloud Firestore é um banco de dados NoSQL flexível e escalonável. Minha primeira impressão foi bastante positiva, com uma experiência intuitiva, provavelmente devido à documentação bem estruturada.
 
 Para utilizar a ferramenta, basta criar sua conta no site do Firebase e configurar seu projeto no console da plataforma. Nas configurações, você encontrará uma máscara de conexão semelhante a esta:
